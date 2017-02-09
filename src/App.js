@@ -28,18 +28,34 @@ class App extends Component {
   }
 
   listenToTownhalls() {
-    console.log('crap');
-    base.bindToState(`townhalls`, {
-      context: this,
-      state: 'townhalls',
-      asArray:true
-    });
-
+    base.listenTo(`townhalls`, {
+        context: this,
+        asArray: true,
+        then(townhalls){
+          this.verifyCurrentTownhall(townhalls);
+        }
+      })
   }
 
-  componentWillUpdate(nextProps, nextState) {
-     console.log('crap');
-    console.log(nextState)
+  verifyCurrentTownhall(townhalls) {
+    var currentTime = new Date().getTime();
+    var currentTownhall = townhalls.filter((townhall) => {
+      if(currentTime > townhall.start && currentTime < townhall.end) {
+        return true;
+      }
+      return false;
+    });
+    if(currentTownhall.length) {
+      var route = this.context.router.location.pathname;
+      this.setState({
+        currentTownhall : currentTownhall[0]
+      });
+      if(route !== '/questions') {
+        this.context.router.push('/questions');
+      }
+    } else {
+      window.setTimeout(() => this.verifyCurrentTownhall(townhalls), 20000);
+    }
   }
 
   render() {
@@ -52,5 +68,9 @@ class App extends Component {
     );
   }
 }
+
+App.contextTypes = {
+  router: React.PropTypes.object
+};
 
 export default App;
