@@ -17,7 +17,6 @@ class App extends Component {
   }
   componentDidMount() {
     base.onAuth(this.listenToUser.bind(this));
-    
   }
 
   listenToUser(user) {

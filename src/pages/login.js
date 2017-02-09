@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import base from '../configs/firebase';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
+import './login.css';
 
 class Login extends Component {
   constructor(props) {
@@ -54,15 +55,22 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-      	<Snackbar
-      	  bodyStyle={{background:'red'}}
-          open={this.state.alertOpen}
-          message={this.state.alertMessage}
-          autoHideDuration={4000}
-        />
-        <RaisedButton label="Login" primary={true} onClick={this.login.bind(this)} />
-      </div>
+  		<div>
+	      <div className="loginBg"></div>
+	      <div className="login">
+	      	<Snackbar
+	      	  bodyStyle={{background:'red'}}
+	          open={this.state.alertOpen}
+	          message={this.state.alertMessage}
+	          autoHideDuration={4000}
+	        />
+	      	<div className='login-account'>
+	      		<i className="material-icons">account_circle</i>
+				<p>Town Hall Live Questions</p>
+	      	</div>
+	        <RaisedButton className='login-button' label="Login" onClick={this.login.bind(this)} />
+	      </div>
+        </div>
     );
   }
 }

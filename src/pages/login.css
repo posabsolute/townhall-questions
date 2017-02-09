@@ -1,0 +1,38 @@
+.loginBg {
+	width: 100%;
+	height: 100%;
+	margin: 0em;
+    left: 0em;
+    top: 0em;
+    background: black;
+    position: fixed;
+    z-index:1;
+   	background-position:center;
+    background-image:url('/bg.jpg');
+}
+.login{
+	font-family: Roboto;
+	color:#fff;
+}
+
+.login-account{
+	position:absolute;
+	z-index:2;
+	top:12%;
+	width:300px;
+	left:50%;
+	margin-left:-150px;
+}
+
+	.login-account i{
+		font-size:150px;
+		color:#fff;
+	}
+
+.login-button{
+	position:absolute;
+	z-index:2;
+	left:50%;
+	margin-left:-44px;
+	top:80%;
+}
