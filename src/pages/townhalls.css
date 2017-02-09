@@ -1,3 +1,23 @@
 .townhalls-page{
+	background:#eee;
+	padding-bottom:40px;
+}
+
+.townhalls{
+	margin:0 auto;
 	max-width:680px;
+}
+
+.townhall{
+	background:#fff;
+	color:#333;
+	padding:20px;
+	text-align:left;
+	margin: 20px;
+	box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+	
+}
+
+.townhall h4{
+	color:#808080;
 }

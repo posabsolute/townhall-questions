@@ -6,8 +6,8 @@ class Townhall extends Component {
 	    return (
 		    <div>
 		      	<div className="townhall">
-		     		<p>{this.props.name}</p>
-		     		<p>{this.props.date}</p>
+		     		<h3>{this.props.name}</h3>
+		     		<h4>{this.props.date}</h4>
 		      	</div>
 		    </div>
 	    );

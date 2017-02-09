@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import base from '../configs/firebase';
 import AppBar from 'material-ui/AppBar';
 import Townhall from '../components/townhall';
+import './townhalls.css';
 
 class Townhalls extends Component {
   	constructor(props) {
