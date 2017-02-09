@@ -22,7 +22,6 @@ class Login extends Component {
   		this.setSnackMessage(error.message);
   		return;
   	}
-
   	if(this.isAppdirectUser(auth.user.email)) {
   		this.saveUser(auth.user);
   		this.context.router.push('/townhalls');
