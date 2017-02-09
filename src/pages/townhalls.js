@@ -29,6 +29,7 @@ class Townhalls extends Component {
 	                	return <Townhall 
 	                    	name={item.name}
 	                    	date={item.date}
+	                    	index={index}
 	                    	key={item.key} />
 	            	})}
 		      	</div>
