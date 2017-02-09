@@ -18,14 +18,6 @@ class Townhalls extends Component {
 	  });
 	}
 
-	componentWillMount(nextProps, nextState) {
-		
-	}
-
-	componentWillUpdate(nextProps, nextState) {
-		
-	}
-
   	render() {
 	    return (
 	      <div className="townhalls">
