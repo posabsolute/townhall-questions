@@ -50,7 +50,7 @@ class App extends Component {
         currentTownhall : currentTownhall[0]
       });
       if(route !== '/questions') {
-        this.context.router.push('/questions');
+        //this.context.router.push('/questions');
       }
     } else {
       window.setTimeout(() => this.verifyCurrentTownhall(townhalls), 20000);
