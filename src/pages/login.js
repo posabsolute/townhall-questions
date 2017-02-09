@@ -23,10 +23,24 @@ class Login extends Component {
   	}
 
   	if(this.isAppdirectUser(auth.user.email)) {
+  		this.saveUser(auth.user);
+  		this.seedData();
   		this.context.router.push('/townhalls');
   	}else{
   		this.setSnackMessage('Please use your AppDirect account.');
   	}
+  }
+
+  saveUser(user) {
+  	base.post(`users/${user.uid}`, {
+    	data: {
+	    	displayName: user.displayName, 
+	    	email: user.email,
+	    	photo: user.photoURL,
+	    	uid: user.uid,
+	    	key: user.uid
+	    }
+    });
   }
 
   setSnackMessage(message) {
