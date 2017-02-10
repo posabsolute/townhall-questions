@@ -13,7 +13,7 @@ class Questions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: [],
+      questions: undefined,
       openModal:false,
     };
   }
@@ -62,13 +62,13 @@ class Questions extends Component {
   }
 
   render() {
-  	var questions = this.state.questions.filter(question => parseInt(question.townhall, 10) === parseInt(this.props.currentTownhall.key, 10));
+  	var questions = this.state.questions ? this.state.questions.filter(question => parseInt(question.townhall, 10) === parseInt(this.props.currentTownhall.key, 10)) : undefined;
     return (
       <div className="questions-page">
         <AppBar title="Town Hall Live Questions" style={{background:'#333739'}} />
         <div className='questions'>
-          <FlipMove easing="cubic-bezier(0, 0.7, 0.8, 0.1)">
-          {questions.sort((a, b) => a.votes < b.votes).map((item, index) => {
+          <FlipMove>
+          {questions && questions.sort((a, b) => a.votes < b.votes).map((item, index) => {
             return <Question
               name={item.name}
               description={item.description}
@@ -77,6 +77,7 @@ class Questions extends Component {
               key={item.key} />
           })}
           </FlipMove>
+          {questions && !questions.length ? (<div className="question">There is currently no questions, be the first!</div>) : null }
         </div>
         <div className="button">
         	<FloatingActionButton backgroundColor='#333739'>
