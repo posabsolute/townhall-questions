@@ -5,6 +5,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Question from '../components/question';
 import ModalAddQuestion from '../components/add-question-dialog';
+import FlipMove from 'react-flip-move';
 
 import './questions.css';
 
@@ -26,7 +27,6 @@ class Questions extends Component {
   }
 
   saveQuestion() {
-  	console.log(this, this.state.question)
   	var uuid = generateGuid();
 	if (this.state.question) {
 	  	base.post(`questions/${uuid}`, {
@@ -35,6 +35,7 @@ class Questions extends Component {
 		    	description: this.state.description,
 		    	user: this.props.user.uid,
 		    	uuid: uuid,
+		    	votes: 0,
 		    	townhall: this.props.currentTownhall.key,
 		    	key: uuid,
 		    }
@@ -61,11 +62,12 @@ class Questions extends Component {
   }
 
   render() {
-  	var questions = this.state.questions.filter(question => parseInt(question.townhall) === parseInt(this.props.currentTownhall.key));
+  	var questions = this.state.questions.filter(question => parseInt(question.townhall, 10) === parseInt(this.props.currentTownhall.key, 10));
     return (
       <div className="questions-page">
         <AppBar title="Town Hall Live Questions" style={{background:'#333739'}} />
         <div className='questions'>
+          <FlipMove easing="cubic-bezier(0, 0.7, 0.8, 0.1)">
           {questions.sort((a, b) => a.votes < b.votes).map((item, index) => {
             return <Question
               name={item.name}
@@ -74,6 +76,7 @@ class Questions extends Component {
               uuid={item.uuid}
               key={item.key} />
           })}
+          </FlipMove>
         </div>
         <div className="button">
         	<FloatingActionButton backgroundColor='#333739'>
