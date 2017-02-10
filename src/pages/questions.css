@@ -1,5 +1,18 @@
-.questions .button{
-	position: absolute;
+.questions-page{
+  background:#eee;
+  padding-bottom:40px;
+}
+
+.questions-page .button{
+	position: fixed;
 	bottom: 30px;
 	right: 30px;
+}
+
+.questions {
+
+}
+
+.question {
+
 }

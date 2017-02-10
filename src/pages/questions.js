@@ -24,14 +24,18 @@ class Questions extends Component {
 
   render() {
     return (
-      <div className="questions">
+      <div className="questions-page">
         <AppBar title="Town Hall Live Questions" style={{background:'#333739'}} />
-        {this.state.questions.sort((a, b) => a.votes < b.votes).map((item, index) => {
-          return <Question
-            name={item.name}
-            description={item.description}
-            votes={item.votes} />
-        })}
+        <div className='questions'>
+          {this.state.questions.sort((a, b) => a.votes < b.votes).map((item, index) => {
+            return <Question
+              name={item.name}
+              description={item.description}
+              votes={item.votes}
+              uuid={item.uuid}
+              key={item.key} />
+          })}
+        </div>
         <div className="button">
         	<FloatingActionButton backgroundColor='#333739'>
     	      <ContentAdd />

@@ -1,21 +1,46 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
+import base from '../configs/firebase';
+import Badge from 'material-ui/Badge';
+import PlusOneIcon from 'material-ui/svg-icons/social/plus-one';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import {Card, CardActions, CardHeader} from 'material-ui/Card';
 
 
 
-class Townhall extends Component {
+class Question extends Component {
 
-    render() {
-      return (
-          <div className="question">
-            <Paper>
-              <p>{this.props.name}</p>
-              <p>{this.props.description}</p>
-              <p>{this.props.votes}</p>
-            </Paper>
-          </div>
-      );
-    }
+  handleVote = () => {
+    base.update(`questions/${this.props.uuid}`, {
+      data: {votes: this.props.votes + 1},
+      then(err){
+        if(err){
+          console.error(err);
+        }
+      }
+    });
+  };
+
+  render() {
+    return (
+      <Card className="question">
+        <CardHeader
+          title={this.props.name}
+          subtitle={this.props.description}
+          avatar={
+            <Badge
+              badgeContent={this.props.votes}
+              primary={true}
+            />
+          }
+        />
+        <CardActions>
+          <FloatingActionButton className="vote-button" onTouchTap={this.handleVote}>
+            <PlusOneIcon />
+          </FloatingActionButton>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
-export default Townhall;
+export default Question;
