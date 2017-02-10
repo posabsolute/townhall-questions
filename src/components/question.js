@@ -9,7 +9,8 @@ import {Card, CardActions, CardHeader} from 'material-ui/Card';
 
 class Question extends Component {
 
-  handleVote = () => {
+  handleVote = (e) => {
+  	e.preventDefault();
     base.update(`questions/${this.props.uuid}`, {
       data: {votes: this.props.votes + 1},
       then(err){
@@ -34,7 +35,7 @@ class Question extends Component {
           }
         />
         <CardActions>
-          <FloatingActionButton className="vote-button" onTouchTap={this.handleVote}>
+          <FloatingActionButton className="vote-button" onTouchTap={this.handleVote.bind(this)}>
             <PlusOneIcon />
           </FloatingActionButton>
         </CardActions>

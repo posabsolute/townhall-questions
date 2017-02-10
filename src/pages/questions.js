@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import base from '../configs/firebase';
 import AppBar from 'material-ui/AppBar';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import Question from '../components/question';
 import ModalAddQuestion from '../components/add-question-dialog';
 import FlipMove from 'react-flip-move';
@@ -14,7 +12,6 @@ class Questions extends Component {
     super(props);
     this.state = {
       questions: undefined,
-      openModal:false,
     };
   }
 
@@ -29,6 +26,7 @@ class Questions extends Component {
   saveQuestion() {
   	var uuid = generateGuid();
 	if (this.state.question) {
+		this.handleClose();
 	  	base.post(`questions/${uuid}`, {
 	    	data: {
 		    	name: this.state.question, 
@@ -40,7 +38,7 @@ class Questions extends Component {
 		    	key: uuid,
 		    }
 	    });
-	    this.handleClose();	
+	    
 	}
 
   	function generateGuid() {
@@ -54,10 +52,6 @@ class Questions extends Component {
 	  }
 	  return result;
   	}
-  }
-
-  openAddQuestionModal() {
-  	this.setState({openModal:true});
   }
 
   render() {
@@ -78,11 +72,6 @@ class Questions extends Component {
           </FlipMove>
           {questions && !questions.length ? (<div className="question">There is currently no questions, be the first!</div>) : null }
         </div>
-        <div className="button">
-        	<FloatingActionButton backgroundColor='#333739'>
-    	      <ContentAdd onTouchTap={this.openAddQuestionModal.bind(this)} />
-    	    </FloatingActionButton>
-    	</div>
 		<ModalAddQuestion user={this.props.user} currentTownhall={this.props.currentTownhall} submit={this.saveQuestion} open={this.state.openModal} />
       </div>
     );

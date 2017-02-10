@@ -2,6 +2,8 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -13,16 +15,10 @@ export default class DialogAddQuestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: this.props.open,
+      open: false,
       question: '',
       description: '',
     };
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    if(nextProps.open !== this.state.open) {
-      this.handleOpen();
-    }
   }
 
   handleQuestionChange(e) {
@@ -42,12 +38,11 @@ export default class DialogAddQuestion extends React.Component {
   };
 
   render() {
-    console.log(this.props)
     const actions = [
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.handleClose.bind(this)}
       />,
       <FlatButton
         label="Submit"
@@ -59,6 +54,11 @@ export default class DialogAddQuestion extends React.Component {
 
     return (
       <div>
+        <div className="button">
+            <FloatingActionButton backgroundColor='#333739' onTouchTap={this.handleOpen.bind(this)} >
+              <ContentAdd />
+            </FloatingActionButton>
+        </div>
         <Dialog
           title="Add Your Question"
           actions={actions}
@@ -82,7 +82,7 @@ export default class DialogAddQuestion extends React.Component {
               multiLine={true}
               rows={3}
               fullWidth={true}
-              onChange={this.handleDescriptionChange}
+              onChange={this.handleDescriptionChange.bind(this)}
             />
           </div>
         </Dialog>
