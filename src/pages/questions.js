@@ -58,7 +58,7 @@ class Questions extends Component {
   	var questions = this.state.questions ? this.state.questions.filter(question => parseInt(question.townhall, 10) === parseInt(this.props.currentTownhall.key, 10)) : undefined;
     return (
       <div className="questions-page">
-        <AppBar title="Town Hall Live Questions" style={{background:'#333739'}} />
+        <AppBar className="appBar" title="Town Hall Live Questions" style={{background:'#333739'}} />
         <div className='questions'>
           <FlipMove>
           {questions && questions.sort((a, b) => a.votes < b.votes).map((item, index) => {

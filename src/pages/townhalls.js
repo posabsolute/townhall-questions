@@ -31,7 +31,7 @@ class Townhalls extends Component {
   		var townhalls = this.getTownhalls();
 	    return (
 	    	<div className="townhalls-page">
-	    		<AppBar title="Town Hall Live Questions" style={{background:'#333739'}} />
+	    		<AppBar className="appBar" title="Town Hall Live Questions" style={{background:'#333739'}} />
 		      	<div className="townhalls">
 		      		<div className="townhall">You can only access questions when a town hall is ongoing.</div>
 		        	{townhalls.sort((a, b) => a.from > b.from).map((item, index) => {

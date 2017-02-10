@@ -18,6 +18,10 @@
   font-size: large;
 }
 
+h1{    font-size: 21px!important;
+    font-family: helvetica;
+    font-weight: 100!important;}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -26,3 +30,5 @@
 #root, .App, .App > div, .login{
   min-height: 100%;
 }
+
+.appBar button{display:none !important;}
