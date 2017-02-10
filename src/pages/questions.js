@@ -57,7 +57,6 @@ class Questions extends Component {
   }
 
   openAddQuestionModal() {
-  	console.log('crap');
   	this.setState({openModal:true});
   }
 
