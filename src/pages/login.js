@@ -64,10 +64,10 @@ class Login extends Component {
 	          autoHideDuration={4000}
 	        />
 	      	<div className='login-account'>
-	      		<i className="material-icons">account_circle</i>
+	      		<img src='/logo.png' width="139px" height="144px" />
 				<p>Town Hall Live Questions</p>
 	      	</div>
-	        <RaisedButton className='login-button' label="Login" onClick={this.login.bind(this)} />
+	        <RaisedButton className='login-button' label="Login with Gmail" onClick={this.login.bind(this)} />
 	      </div>
         </div>
     );

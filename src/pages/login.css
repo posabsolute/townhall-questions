@@ -7,16 +7,21 @@
     background: black;
     position: fixed;
     z-index:1;
-   	background-position:center;
+    background:linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0)
+    ),url('/br.jpg');
+    background-position:center;
    	background-size:cover;
-    background-image:url('/bg.jpg');
 }
 .login{
-	font-family: Roboto;
+	font-family: helvetica;
 	color:#fff;
+	font-weight: 100;
 }
 
 .login-account{
+	font-size:18px;
 	position:absolute;
 	z-index:2;
 	top:12%;
@@ -34,6 +39,6 @@
 	position:absolute;
 	z-index:2;
 	left:50%;
-	margin-left:-44px;
+	margin-left:-84px;
 	top:80%;
 }
