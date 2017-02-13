@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import base from '../configs/firebase';
-import Badge from 'material-ui/Badge';
-import {ContentAdd, ContentRemove} from 'material-ui/svg-icons';
+import {ActionDone, ContentRemove} from 'material-ui/svg-icons';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import {Card, CardActions, CardHeader} from 'material-ui/Card';
+import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 
 
@@ -39,28 +38,17 @@ class Question extends Component {
   render() {
     return (
       <Card className="question">
-        <CardHeader
-          title={this.props.name}
-          subtitle={this.props.description}
-          avatar={
-            <Badge
-              badgeContent={this.props.votes}
-              primary={true}
-              badgeStyle={{
-                'background-color': this.state.voted ? "#76BD22" : "#E33D51"
-              }}
-            />
-          }
-        />
-        <CardActions>
+        <CardTitle className="cardHeader" title={this.props.name} subtitle={this.props.description} />
+        <CardText className="votesContainer">
+          <div className="votes"><strong>{this.props.votes} upvotes</strong></div>
           <FloatingActionButton
             className="vote-button"
             onTouchTap={this.handleVote.bind(this)}
-            backgroundColor="#009ABF"
+            backgroundColor={this.state.voted ? "#f44336" : "#009ABF"}
           >
-            {this.state.voted ? <ContentRemove /> : <ContentAdd />}
+            {this.state.voted ? <ContentRemove /> : <ActionDone />}
           </FloatingActionButton>
-        </CardActions>
+        </CardText>
       </Card>
     );
   }
