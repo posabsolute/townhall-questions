@@ -36,7 +36,7 @@ class Townhalls extends Component {
 	    	<div className="townhalls-page">
 	    		<AppBar className="appBar" title="Town Hall Live Questions" style={{background:'#333739'}} />
 		      	<div className="townhalls">
-		      		<div className="townhall">You can only access questions when a town hall is ongoing.</div>
+		      		<div className="townhall">You can only access questions when a town hall is ongoing. Once a session is about to start you will be automatically redirected.</div>
 		        	{townhalls.map((item, index) => {
 	                	return <Townhall 
 	                    	name={item.name}

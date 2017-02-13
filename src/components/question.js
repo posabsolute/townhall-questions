@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import base from '../configs/firebase';
-import {ActionDone, ContentRemove} from 'material-ui/svg-icons';
+import {ActionThumbUp, ContentRemove} from 'material-ui/svg-icons';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
@@ -43,10 +43,11 @@ class Question extends Component {
           <div className="votes"><strong>{this.props.votes} upvotes</strong></div>
           <FloatingActionButton
             className="vote-button"
+            mini={true}
             onTouchTap={this.handleVote.bind(this)}
             backgroundColor={this.state.voted ? "#f44336" : "#009ABF"}
           >
-            {this.state.voted ? <ContentRemove /> : <ActionDone />}
+            {this.state.voted ? <ContentRemove /> : <ActionThumbUp />}
           </FloatingActionButton>
         </CardText>
       </Card>

@@ -43,3 +43,7 @@
 	padding-bottom:0px!important;
 	margin-bottom:-8px;
 }
+.cardHeader > span:first-child {
+	line-height: 31px!important;
+	padding-bottom:5px;
+}
