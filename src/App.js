@@ -44,13 +44,13 @@ class App extends Component {
       }
       return false;
     });
-    if(currentTownhall.length) {
+    if(currentTownhall.length && route !== '/login') {
       var route = this.context.router.location.pathname;
       this.setState({
         currentTownhall : currentTownhall[0]
       });
       if(route !== '/questions') {
-        //this.context.router.push('/questions');
+        this.context.router.push('/questions');
       }
     } else {
       window.setTimeout(() => this.verifyCurrentTownhall(townhalls), 20000);
