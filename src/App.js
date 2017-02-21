@@ -44,8 +44,9 @@ class App extends Component {
       }
       return false;
     });
-    if(currentTownhall.length && route !== '/login') {
-      var route = this.context.router.location.pathname;
+    var route = this.context.router.location.pathname;
+    if(currentTownhall.length && route !== '/login' && route !== '/') {
+     
       this.setState({
         currentTownhall : currentTownhall[0]
       });
